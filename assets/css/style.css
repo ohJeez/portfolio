@@ -368,12 +368,7 @@ margin-bottom: var(--mb-0-75);
 
 /* Hide home image by default */
 .home_img {
-    width: 100%;
-    max-width: 500px; /* Adjust as necessary */
-    height: auto;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
+    display: none;
 }
 
 /*===== Buttons =====*/
