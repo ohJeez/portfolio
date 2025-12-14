@@ -1,20 +1,21 @@
-/*=============== SHOW SIDEBAR ===============*/
+/*=============== SIDEBAR SCROLL-SPY ===============*/
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section');
+    const sections = document.querySelectorAll('.section, #home');
     const navLinks = document.querySelectorAll('.nav_link');
 
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.7
+        rootMargin: '-25% 0px -65% 0px',
+        threshold: 0
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
                 navLinks.forEach(link => {
                     link.classList.remove('active-link');
-                    if (link.getAttribute('href').substring(1) === entry.target.id) {
+                    if (link.getAttribute('href') === `#${id}`) {
                         link.classList.add('active-link');
                     }
                 });
@@ -25,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         observer.observe(section);
     });
+
+    // Set initial active state for home
+    if (window.scrollY < 100) {
+        const homeLink = document.querySelector('.nav_link[href="#home"]');
+        if (homeLink) homeLink.classList.add('active-link');
+    }
 
     const navMenu = document.getElementById('side');
     const navToggle = document.getElementById('nav-toggle');
@@ -52,20 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Ensure Home is highlighted on initial load if at the top
-    window.addEventListener('load', () => {
-        if (window.scrollY === 0) {
-            document.querySelector('.nav_link[href="#home"]').classList.add('active-link');
-        }
-    });
-
-    // Ensure Home is highlighted when scrolling back to top
-    window.addEventListener('scroll', () => {
-        if (window.scrollY === 0) {
-            navLinks.forEach(link => link.classList.remove('active-link'));
-            document.querySelector('.nav_link[href="#home"]').classList.add('active-link');
-        }
-    });
+    // Set initial active state for home
+    if (window.scrollY < 100) {
+        const homeLink = document.querySelector('.nav_link[href="#home"]');
+        if (homeLink) homeLink.classList.add('active-link');
+    }
 });
 
 
@@ -78,28 +76,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-/*=============== SKILLS TABS ===============*/
+/*=============== SKILLS ACCORDION ===============*/
+document.addEventListener('DOMContentLoaded', () => {
+    const skillsCategories = document.querySelectorAll('.skills_category');
+    const skillsData = document.querySelectorAll('.skills_data');
 
+    skillsCategories.forEach(category => {
+        category.addEventListener('click', () => {
+            const categoryName = category.getAttribute('data-category');
+            
+            // Close all categories
+            skillsCategories.forEach(cat => cat.classList.remove('active'));
+            skillsData.forEach(data => data.classList.remove('active'));
+            
+            // Open clicked category
+            category.classList.add('active');
+            const targetData = document.querySelector(`.skills_data[data-content="${categoryName}"]`);
+            if (targetData) {
+                targetData.classList.add('active');
+                
+                // Animate progress bars
+                setTimeout(() => {
+                    const progressBars = targetData.querySelectorAll('.skills_progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        bar.style.width = `${width}%`;
+                    });
+                }, 100);
+            }
+        });
+    });
 
-           
-            const tabs = document.querySelectorAll('[data-target]');
-            const tabContent = document.querySelectorAll('[data-content]');
-        
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const target = document.querySelector(tab.dataset.target);
-        
-                    tabContent.forEach(content => {
-                        content.classList.remove('skills_active');
-                    });
-                    target.classList.add('skills_active');
-        
-                    tabs.forEach(tab => {
-                        tab.classList.remove('skills_active');
-                    });
-                    tab.classList.add('skills_active');
-                });
-            });
+    // Initialize first category
+    if (skillsCategories.length > 0) {
+        skillsCategories[0].click();
+    }
+});
        
 
 /*=============== MIXITUP FILTER PORTFOLIO ===============*/
@@ -154,22 +166,114 @@ const modalViews = document.querySelectorAll('.services_modal'),
       modalBtns = document.querySelectorAll('.services_button'),
       modalCloses = document.querySelectorAll('.services_modal-close');
 
-let modal = function(modalClick) {
-    modalViews[modalClick].classList.add('active-modal');
+// Store original body overflow and position to restore later
+let originalBodyOverflow = '';
+let originalBodyPosition = '';
+let scrollY = 0;
+
+function openModal(index) {
+    // Prevent multiple modals from opening
+    closeAllModals();
+    
+    // Store current scroll position
+    scrollY = window.scrollY;
+    
+    // Lock body scroll
+    originalBodyOverflow = document.body.style.overflow;
+    originalBodyPosition = document.body.style.position;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    
+    // Open the selected modal
+    if (modalViews[index]) {
+        modalViews[index].classList.add('active-modal');
+    }
 }
 
+function closeAllModals() {
+    // Close all modals
+    modalViews.forEach((modalView) => {
+        modalView.classList.remove('active-modal');
+    });
+    
+    // Restore body scroll
+    document.body.style.overflow = originalBodyOverflow || '';
+    document.body.style.position = originalBodyPosition || '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    
+    // Restore scroll position
+    if (scrollY !== 0) {
+        window.scrollTo(0, scrollY);
+    }
+}
+
+// Open modal on button click
 modalBtns.forEach((modalBtn, i) => {
-    modalBtn.addEventListener('click', () => {
-        modal(i);
+    modalBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(i);
     });
 });
 
+// Close modal on close button click
 modalCloses.forEach((modalClose) => {
-    modalClose.addEventListener('click', () => {
-        modalViews.forEach((modalView) => {
-            modalView.classList.remove('active-modal');
-        });
+    modalClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeAllModals();
     });
+});
+
+// Close modal on backdrop click
+modalViews.forEach((modalView) => {
+    modalView.addEventListener('click', (e) => {
+        // Only close if clicking the backdrop (not the content)
+        if (e.target === modalView) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeAllModals();
+        }
+    });
+    
+    // Prevent modal content clicks from closing
+    const modalContent = modalView.querySelector('.services_modal-content');
+    if (modalContent) {
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' || e.keyCode === 27) {
+        closeAllModals();
+    }
+});
+
+/*=============== SCROLL REVEAL ANIMATIONS ===============*/
+const revealSections = document.querySelectorAll('.reveal-section');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            // Unobserve after animation to prevent re-triggering
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
+});
+
+// Observe all reveal sections
+revealSections.forEach(section => {
+    revealObserver.observe(section);
 });
 
 /*=============== SWIPER TESTIMONIAL ===============*/
