@@ -51,11 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Highlight the Home button when clicked
+    // Highlight the Home button when clicked and close mobile menu
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navLinks.forEach(navLink => navLink.classList.remove('active-link'));
             link.classList.add('active-link');
+
+            // Close mobile menu when link is clicked
+            if (window.innerWidth <= 1024) {
+                navMenu.classList.remove('show-sidebar');
+            }
         });
     });
 
@@ -162,97 +167,99 @@ function portfolioItemDetails(portfolioItem){
 
 }
 /*=============== SERVICES MODAL ===============*/
-const modalViews = document.querySelectorAll('.services_modal'),
-      modalBtns = document.querySelectorAll('.services_button'),
-      modalCloses = document.querySelectorAll('.services_modal-close');
+document.addEventListener('DOMContentLoaded', () => {
+    const modalViews = document.querySelectorAll('.services_modal');
+    const modalBtns = document.querySelectorAll('.services_button');
+    const modalCloses = document.querySelectorAll('.services_modal-close');
 
-// Store original body overflow and position to restore later
-let originalBodyOverflow = '';
-let originalBodyPosition = '';
-let scrollY = 0;
+    // Store original body overflow and position to restore later
+    let originalBodyOverflow = '';
+    let originalBodyPosition = '';
+    let scrollY = 0;
 
-function openModal(index) {
-    // Prevent multiple modals from opening
-    closeAllModals();
-    
-    // Store current scroll position
-    scrollY = window.scrollY;
-    
-    // Lock body scroll
-    originalBodyOverflow = document.body.style.overflow;
-    originalBodyPosition = document.body.style.position;
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    
-    // Open the selected modal
-    if (modalViews[index]) {
-        modalViews[index].classList.add('active-modal');
-    }
-}
-
-function closeAllModals() {
-    // Close all modals
-    modalViews.forEach((modalView) => {
-        modalView.classList.remove('active-modal');
-    });
-    
-    // Restore body scroll
-    document.body.style.overflow = originalBodyOverflow || '';
-    document.body.style.position = originalBodyPosition || '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    
-    // Restore scroll position
-    if (scrollY !== 0) {
-        window.scrollTo(0, scrollY);
-    }
-}
-
-// Open modal on button click
-modalBtns.forEach((modalBtn, i) => {
-    modalBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        openModal(i);
-    });
-});
-
-// Close modal on close button click
-modalCloses.forEach((modalClose) => {
-    modalClose.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+    function openModal(index) {
+        // Prevent multiple modals from opening
         closeAllModals();
-    });
-});
+        
+        // Store current scroll position
+        scrollY = window.scrollY;
+        
+        // Lock body scroll
+        originalBodyOverflow = document.body.style.overflow;
+        originalBodyPosition = document.body.style.position;
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+        
+        // Open the selected modal
+        if (modalViews[index]) {
+            modalViews[index].classList.add('active-modal');
+        }
+    }
 
-// Close modal on backdrop click
-modalViews.forEach((modalView) => {
-    modalView.addEventListener('click', (e) => {
-        // Only close if clicking the backdrop (not the content)
-        if (e.target === modalView) {
+    function closeAllModals() {
+        // Close all modals
+        modalViews.forEach((modalView) => {
+            modalView.classList.remove('active-modal');
+        });
+        
+        // Restore body scroll
+        document.body.style.overflow = originalBodyOverflow || '';
+        document.body.style.position = originalBodyPosition || '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        
+        // Restore scroll position
+        if (scrollY !== 0) {
+            window.scrollTo(0, scrollY);
+        }
+    }
+
+    // Open modal on button click - ONLY for service buttons, not nav links
+    modalBtns.forEach((modalBtn, i) => {
+        modalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openModal(i);
+        });
+    });
+
+    // Close modal on close button click
+    modalCloses.forEach((modalClose) => {
+        modalClose.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             closeAllModals();
+        });
+    });
+
+    // Close modal on backdrop click
+    modalViews.forEach((modalView) => {
+        modalView.addEventListener('click', (e) => {
+            // Only close if clicking the backdrop (not the content)
+            if (e.target === modalView) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeAllModals();
+            }
+        });
+        
+        // Prevent modal content clicks from closing
+        const modalContent = modalView.querySelector('.services_modal-content');
+        if (modalContent) {
+            modalContent.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
         }
     });
-    
-    // Prevent modal content clicks from closing
-    const modalContent = modalView.querySelector('.services_modal-content');
-    if (modalContent) {
-        modalContent.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-    }
-});
 
-// Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' || e.keyCode === 27) {
-        closeAllModals();
-    }
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            closeAllModals();
+        }
+    });
 });
 
 /*=============== SCROLL REVEAL ANIMATIONS ===============*/

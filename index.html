@@ -52,7 +52,8 @@
 <!--========== HOME ==========-->
 <section class="home" id="home">
     <div class="home_data">
-        <img src="assets/img/cover.png" class="home_img" alt="">
+        <!-- <img src="
+        assets/img/cover.png" class="home_img" alt="Profile"> -->
 
         <h1 class="home_title" data-text="Hi, I'm">Hi, I'm</h1>
         <h1 class="home_name" data-text="Jees Thomas Cleetus">Jees Thomas Cleetus</h1>
@@ -69,12 +70,14 @@
         </a>
     </div>
 
-    <div class="home_social">
-        <a href="https://www.linkedin.com/in/jeesthomascleetus/" target="_blank"><i class="uil uil-linkedin"></i></a>
-        <a href="https://github.com/ohJeez" target="_blank"><i class="uil uil-github"></i></a>
-        <a href="https://instagram.com/__changayiii____" target="_blank"><i class="uil uil-instagram"></i></a>
-    </div>
 </section>
+
+<!-- Fixed Social Icons -->
+<div class="social-fixed">
+    <a href="https://www.linkedin.com/in/jeesthomascleetus/" target="_blank"><i class="uil uil-linkedin"></i></a>
+    <a href="https://github.com/ohJeez" target="_blank"><i class="uil uil-github"></i></a>
+    <a href="https://instagram.com/__changayiii____" target="_blank"><i class="uil uil-instagram"></i></a>
+</div>
 
 <!--========== ABOUT ==========-->
 <section class="about section reveal-section" id="about">
@@ -633,7 +636,7 @@
 </section>
 
 <!--========== SERVICES ==========-->
-<section class="services section reveal-section" id="services">
+<section id="services" class="services section reveal-section target-section">
     <h2 class="section_title reveal-item">Services</h2>
 
     <div class="services_container container grid">
@@ -641,256 +644,72 @@
             <i class="uil uil-web-grid services_icon"></i>
             <h3 class="services_title">UI / UX Design</h3>
             <p class="services_description">Designing intuitive interfaces that users love. From wireframes to polished designs, I create experiences that balance aesthetics with functionality.</p>
-            <span class="services_button">
+            <button type="button" class="services_button">
                 View Details <i class="uil uil-arrow-right services_button-icon"></i>
-            </span>
-            <div class="services_modal">
-                <div class="services_modal-content">
-                    <i class="uil uil-times services_modal-close"></i>
-                    <h3 class="services_modal-title">UI / UX Design</h3>
-                    <p class="services_modal-description">
-                        I design user interfaces that are both beautiful and functional. My process focuses on understanding user needs, creating clear information architecture, and delivering designs that enhance usability and engagement.
-                    </p>
-                    <ul class="services_modal-services grid">
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Interface Design & Visual Hierarchy</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">User Flow & Experience Mapping</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Figma Prototyping & Design Systems</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </button>
         </div>
 
         <div class="services_content reveal-item">
             <i class="uil uil-code services_icon"></i>
             <h3 class="services_title">Frontend Development</h3>
             <p class="services_description">Building responsive, performant web interfaces with clean code. I turn designs into working products that load fast and work seamlessly across devices.</p>
-            <span class="services_button">
+            <button type="button" class="services_button">
                 View Details <i class="uil uil-arrow-right services_button-icon"></i>
-            </span>
-            <div class="services_modal">
-                <div class="services_modal-content">
-                    <i class="uil uil-times services_modal-close"></i>
-                    <h3 class="services_modal-title">Frontend Development</h3>
-                    <p class="services_modal-description">
-                        I develop frontend solutions that are maintainable, scalable, and performant. From static sites to dynamic web applications, I write clean code that brings designs to life.
-                    </p>
-                    <ul class="services_modal-services grid">
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">HTML5, CSS3, JavaScript (ES6+)</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Responsive & Mobile-First Design</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Code Quality & Performance Tuning</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </button>
         </div>
 
         <div class="services_content reveal-item">
             <i class="uil uil-mobile-android services_icon"></i>
             <h3 class="services_title">Mobile App Development</h3>
             <p class="services_description">Creating native-feeling mobile apps with Flutter. One codebase, smooth performance on both iOS and Android with consistent UI/UX.</p>
-            <span class="services_button">
+            <button type="button" class="services_button">
                 View Details <i class="uil uil-arrow-right services_button-icon"></i>
-            </span>
-            <div class="services_modal">
-                <div class="services_modal-content">
-                    <i class="uil uil-times services_modal-close"></i>
-                    <h3 class="services_modal-title">Mobile App Development</h3>
-                    <p class="services_modal-description">
-                        I build cross-platform mobile applications using Flutter, delivering native performance and smooth animations. From UI implementation to state management, I create apps that feel polished and responsive.
-                    </p>
-                    <ul class="services_modal-services grid">
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Flutter Cross-Platform Development</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Custom UI Components & Animations</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">State Management & API Integration</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </button>
         </div>
 
         <div class="services_content reveal-item">
             <i class="uil uil-lightbulb services_icon"></i>
             <h3 class="services_title">Product & Startup Design</h3>
             <p class="services_description">From idea to launch. I help startups build MVPs and scale products by combining design thinking with technical execution.</p>
-            <span class="services_button">
+            <button type="button" class="services_button">
                 View Details <i class="uil uil-arrow-right services_button-icon"></i>
-            </span>
-            <div class="services_modal">
-                <div class="services_modal-content">
-                    <i class="uil uil-times services_modal-close"></i>
-                    <h3 class="services_modal-title">Product & Startup Design</h3>
-                    <p class="services_modal-description">
-                        As a co-founder, I understand the startup journey. I help transform ideas into working products by focusing on user needs, rapid iteration, and building MVPs that validate concepts quickly.
-                    </p>
-                    <ul class="services_modal-services grid">
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Product Strategy & Planning</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">MVP Development & Iteration</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Design-to-Development Workflow</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </button>
         </div>
 
         <div class="services_content reveal-item">
             <i class="uil uil-browser services_icon"></i>
             <h3 class="services_title">Web Application Development</h3>
             <p class="services_description">Building full-featured web applications with clean architecture. Responsive, performant, and maintainable code that scales.</p>
-            <span class="services_button">
+            <button type="button" class="services_button">
                 View Details <i class="uil uil-arrow-right services_button-icon"></i>
-            </span>
-            <div class="services_modal">
-                <div class="services_modal-content">
-                    <i class="uil uil-times services_modal-close"></i>
-                    <h3 class="services_modal-title">Web Application Development</h3>
-                    <p class="services_modal-description">
-                        I develop complete web applications from frontend to backend integration. My focus is on creating scalable solutions with clean code architecture and optimal performance.
-                    </p>
-                    <ul class="services_modal-services grid">
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Full-Stack Web Applications</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Responsive & Accessible UI</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Clean Architecture & Code Quality</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </button>
         </div>
 
         <div class="services_content reveal-item">
             <i class="uil uil-robot services_icon"></i>
             <h3 class="services_title">AI-Powered Web Interfaces</h3>
             <p class="services_description">Integrating AI capabilities into web experiences. Building conversational interfaces and prompt-based assistants with clean, intuitive UIs.</p>
-            <span class="services_button">
+            <button type="button" class="services_button">
                 View Details <i class="uil uil-arrow-right services_button-icon"></i>
-            </span>
-            <div class="services_modal">
-                <div class="services_modal-content">
-                    <i class="uil uil-times services_modal-close"></i>
-                    <h3 class="services_modal-title">AI-Powered Web Interfaces</h3>
-                    <p class="services_modal-description">
-                        I build web interfaces that seamlessly integrate AI capabilities. From chat assistants to prompt-driven tools, I create intuitive frontends that make AI interactions feel natural and engaging.
-                    </p>
-                    <ul class="services_modal-services grid">
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">AI Chat Interfaces & Assistants</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Prompt-Based UI Components</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Frontend AI Integration</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </button>
         </div>
 
         <div class="services_content reveal-item">
             <i class="uil uil-rocket services_icon"></i>
             <h3 class="services_title">Prototyping & MVP Development</h3>
             <p class="services_description">Fast-track from Figma to working product. Rapid prototyping and MVP development to validate ideas quickly and iterate based on feedback.</p>
-            <span class="services_button">
+            <button type="button" class="services_button">
                 View Details <i class="uil uil-arrow-right services_button-icon"></i>
-            </span>
-            <div class="services_modal">
-                <div class="services_modal-content">
-                    <i class="uil uil-times services_modal-close"></i>
-                    <h3 class="services_modal-title">Prototyping & MVP Development</h3>
-                    <p class="services_modal-description">
-                        I help teams move quickly from design to working prototypes. Whether it's converting Figma designs into functional MVPs or building rapid iterations, I focus on speed without compromising quality.
-                    </p>
-                    <ul class="services_modal-services grid">
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Figma to Working Product</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Rapid MVP Development</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Iterative Development & Feedback Loops</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </button>
         </div>
 
         <div class="services_content reveal-item">
             <i class="uil uil-refresh services_icon"></i>
             <h3 class="services_title">UI Revamp & Performance</h3>
             <p class="services_description">Modernizing existing interfaces and improving performance. Redesigning UIs for better UX, visual hierarchy, and faster load times.</p>
-            <span class="services_button">
+            <button type="button" class="services_button">
                 View Details <i class="uil uil-arrow-right services_button-icon"></i>
-            </span>
-            <div class="services_modal">
-                <div class="services_modal-content">
-                    <i class="uil uil-times services_modal-close"></i>
-                    <h3 class="services_modal-title">UI Revamp & Performance Optimization</h3>
-                    <p class="services_modal-description">
-                        I help improve existing products by redesigning interfaces for better usability and performance. From visual updates to code optimization, I enhance both the user experience and technical foundation.
-                    </p>
-                    <ul class="services_modal-services grid">
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">UI Redesign & Visual Updates</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">UX Improvements & Information Architecture</p>
-                        </li>
-                        <li class="services_modal-service">
-                            <i class="uil uil-check-circle services_modal-icon"></i>
-                            <p class="services_modal-info">Frontend Performance Optimization</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </button>
         </div>
     </div>
 </section>
@@ -960,6 +779,199 @@
             </div>
         </div>
         <i class="uil uil-times portfolio_popup-close"></i>
+    </div>
+</div>
+
+<!--========== SERVICES MODALS ==========-->
+<div class="services_modal">
+    <div class="services_modal-content">
+        <i class="uil uil-times services_modal-close"></i>
+        <h3 class="services_modal-title">UI / UX Design</h3>
+        <p class="services_modal-description">
+            I design user interfaces that are both beautiful and functional. My process focuses on understanding user needs, creating clear information architecture, and delivering designs that enhance usability and engagement.
+        </p>
+        <ul class="services_modal-services grid">
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Interface Design & Visual Hierarchy</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">User Flow & Experience Mapping</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Figma Prototyping & Design Systems</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="services_modal">
+    <div class="services_modal-content">
+        <i class="uil uil-times services_modal-close"></i>
+        <h3 class="services_modal-title">Frontend Development</h3>
+        <p class="services_modal-description">
+            I develop frontend solutions that are maintainable, scalable, and performant. From static sites to dynamic web applications, I write clean code that brings designs to life.
+        </p>
+        <ul class="services_modal-services grid">
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">HTML5, CSS3, JavaScript (ES6+)</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Responsive & Mobile-First Design</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Code Quality & Performance Tuning</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="services_modal">
+    <div class="services_modal-content">
+        <i class="uil uil-times services_modal-close"></i>
+        <h3 class="services_modal-title">Mobile App Development</h3>
+        <p class="services_modal-description">
+            I build cross-platform mobile applications using Flutter, delivering native performance and smooth animations. From UI implementation to state management, I create apps that feel polished and responsive.
+        </p>
+        <ul class="services_modal-services grid">
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Flutter Cross-Platform Development</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Custom UI Components & Animations</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">State Management & API Integration</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="services_modal">
+    <div class="services_modal-content">
+        <i class="uil uil-times services_modal-close"></i>
+        <h3 class="services_modal-title">Product & Startup Design</h3>
+        <p class="services_modal-description">
+            As a co-founder, I understand the startup journey. I help transform ideas into working products by focusing on user needs, rapid iteration, and building MVPs that validate concepts quickly.
+        </p>
+        <ul class="services_modal-services grid">
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Product Strategy & Planning</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">MVP Development & Iteration</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Design-to-Development Workflow</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="services_modal">
+    <div class="services_modal-content">
+        <i class="uil uil-times services_modal-close"></i>
+        <h3 class="services_modal-title">Web Application Development</h3>
+        <p class="services_modal-description">
+            I develop complete web applications from frontend to backend integration. My focus is on creating scalable solutions with clean code architecture and optimal performance.
+        </p>
+        <ul class="services_modal-services grid">
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Full-Stack Web Applications</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Responsive & Accessible UI</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Clean Architecture & Code Quality</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="services_modal">
+    <div class="services_modal-content">
+        <i class="uil uil-times services_modal-close"></i>
+        <h3 class="services_modal-title">AI-Powered Web Interfaces</h3>
+        <p class="services_modal-description">
+            I build web interfaces that seamlessly integrate AI capabilities. From chat assistants to prompt-driven tools, I create intuitive frontends that make AI interactions feel natural and engaging.
+        </p>
+        <ul class="services_modal-services grid">
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">AI Chat Interfaces & Assistants</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Prompt-Based UI Components</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Frontend AI Integration</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="services_modal">
+    <div class="services_modal-content">
+        <i class="uil uil-times services_modal-close"></i>
+        <h3 class="services_modal-title">Prototyping & MVP Development</h3>
+        <p class="services_modal-description">
+            I help teams move quickly from design to working prototypes. Whether it's converting Figma designs into functional MVPs or building rapid iterations, I focus on speed without compromising quality.
+        </p>
+        <ul class="services_modal-services grid">
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Figma to Working Product</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Rapid MVP Development</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Iterative Development & Feedback Loops</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="services_modal">
+    <div class="services_modal-content">
+        <i class="uil uil-times services_modal-close"></i>
+        <h3 class="services_modal-title">UI Revamp & Performance Optimization</h3>
+        <p class="services_modal-description">
+            I help improve existing products by redesigning interfaces for better usability and performance. From visual updates to code optimization, I enhance both the user experience and technical foundation.
+        </p>
+        <ul class="services_modal-services grid">
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">UI Redesign & Visual Updates</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">UX Improvements & Information Architecture</p>
+            </li>
+            <li class="services_modal-service">
+                <i class="uil uil-check-circle services_modal-icon"></i>
+                <p class="services_modal-info">Frontend Performance Optimization</p>
+            </li>
+        </ul>
     </div>
 </div>
 
