@@ -328,10 +328,20 @@ input{
 .nav_close{
     font-size: 1.5rem;
     position: absolute;
-    top:  1rem;
+    top: 1.5rem;
     right: 1.5rem;
     cursor: pointer;
     display: none;
+    color: var(--skin-color);
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.nav_close:hover {
+    background-color: rgba(255, 0, 79, 0.1);
 }
 /* Active Link */
 .nav_link.active-link,
@@ -368,22 +378,13 @@ input{
 
 /*===== Home Section  =====*/
 .home {
-    height: 100vh;
-    display: flex; /* Use flexbox for centering */
-    align-items: center; /* Center content vertically */
-    justify-content: flex-start; /* Align content to the left */
-    padding: 2rem; /* Add padding if needed */
-    position: relative;
-    overflow: hidden; /* Prevent content overflow */
-}
-
-.home_container {
-    position: relative;
-    width: 100%; /* Adjust width as needed */
+    min-height: 100vh;
     display: flex;
-    align-items: center; /* Ensure content inside container is centered vertically */
-    justify-content: flex-start; /* Align content inside the container to the start (left) */
-    text-align: left; /* Align text to the left */
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Fixed social icons in top-left */
@@ -504,27 +505,6 @@ margin-bottom: var(--mb-0-75);
     color: var(--text-color);
 }
 
-/* Home background image */
-.home_img {
-    position: absolute;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: auto;
-    max-width: 400px;
-    height: auto;
-    max-height: 70vh;
-    object-fit: contain;
-    z-index: 1;
-    opacity: 0.8;
-    filter: drop-shadow(0 8px 32px rgba(255, 0, 79, 0.15));
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(-50%) translateX(0px); }
-    50% { transform: translateY(-50%) translateX(5px); }
-}
 
 /* Disable heavy animations on mobile */
 @media screen and (max-width: 768px) {
@@ -840,80 +820,6 @@ margin-bottom: var(--mb-0-75);
     font-size: var(--small-font-size);
     color: var(--skin-color);
 }
-    /*===== Skills Section =====*/
-    .skills_container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        justify-content: center;
-    }
-
-    .skills_group {
-        background-color: var(--box-color);
-        padding: 1.5rem;
-        border-radius: .5rem;
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .skills_group:hover {
-        transform: translateY(-.25rem);
-    }
-
-    .skills_group h3 {
-        font-size: var(--h3-font-size);
-        font-weight: var(--font-medium);
-        margin-bottom: var(--mb-0-75);
-        color: var(--title-color);
-    }
-
-    .skills_group p {
-        font-size: var(--normal-font-size);
-        color: var(--text-color);
-        line-height: 1.6;
-    }
-    
-    .skills_header {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-    
-    .skills_header:not(:last-child) {
-        margin-bottom: var(--mb-2-5);
-    }
-    
-    .skills_icon,
-    .skills_arrow {
-        font-size: 2rem;
-        color: var(--skin-color);
-    }
-    
-    .skills_icon {
-        margin-right: var(--mb-0-75);
-    }
-    
-    .skills_title {
-        font-size: var(--h3-font-size);
-        font-weight: var(--font-medium);
-    }
-    
-    .skills_subtitle {
-        font-size: var(--small-font-size);
-    }
-    
-    .skills_arrow {
-        margin-left: auto;
-    }
-    
-    .skills_active .skills_arrow {
-        transform: rotate(-90deg);
-        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .skills [data-content]{
-        display:none;
-    }
-    .skills_active[data-content]{
-        display:block;
-    }
     
     /*===== Skills Section =====*/
     .skills_container {
@@ -1882,8 +1788,10 @@ textarea.input{
     padding-top: 2rem;
 }
 .footer_container{
-    grid-template-columns: repeat(3,1fr);
-    column-gap: 1.6rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 .footer_bg{
     background-color: var(--box-color);
@@ -2017,7 +1925,7 @@ textarea.input{
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(4px);
-        z-index: -1;
+        z-index: 999;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
@@ -2080,22 +1988,23 @@ textarea.input{
     .nav_close {
         display: block;
     }
-    .nav_toggle {
-        position: fixed;
-        left: 1rem;
-        top: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 48px;
-        height: 48px;
-        background-color: var(--skin-color);
-        border-radius: 0.75rem;
-        box-shadow: 0 4px 12px rgba(255, 0, 79, 0.3);
-        z-index: 1002;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
+.nav_toggle {
+    position: fixed;
+    left: 1rem;
+    top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--skin-color);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(255, 0, 79, 0.3);
+    z-index: 1002;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
 
     .nav_toggle:hover {
         transform: scale(1.05);
@@ -2442,17 +2351,12 @@ textarea.input{
 }
 
 @media screen and (max-width: 576px) {
-    .nav_toggle {
-        right: initial;
-        left: 1rem;
-    }
-
     .home {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        height: initial;
+        min-height: 100vh;
         padding: 2.5rem 1rem 3rem;
         position: relative;
         text-align: center;
@@ -2574,8 +2478,10 @@ textarea.input{
 
     .contact_container,
     .work_container {
-        grid-template-columns: 300px;
-        /* justify-items: center; */
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+        gap: 2rem;
     }
 
     .footer_container {
